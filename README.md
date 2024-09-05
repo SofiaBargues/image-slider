@@ -1,50 +1,25 @@
-# React + TypeScript + Vite
+# Image Slider Carousel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Objective:**  
+Your task is to implement an image slider (carousel) component with basic functionality. The slider should allow users to navigate through images manually and automatically, using controls for previous/next navigation, as well as play/stop functionality for automatic cycling.
 
-Currently, two official plugins are available:
+## Requirements:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Previous/Next Navigation:**
 
-## Expanding the ESLint configuration
+   - Implement buttons to navigate to the previous and next images in the slider.
+   - The user should be able to manually click these buttons to move forward or backward between images.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **Play/Stop Functionality:**
 
-- Configure the top-level `parserOptions` property like this:
+   - Add a "Play" button that automatically cycles through the images at regular intervals.
+   - Add a "Stop" button that stops the automatic cycling when clicked.
+   - While in play mode, the slider should loop continuously through the images.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+3. **Bare Minimum Animation:**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+   - Implement a simple sliding animation when transitioning between images.
+   - You do not need to focus on advanced CSS or animations—just ensure basic functionality for sliding images is present.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+4. **Optional:**
+   - If you are comfortable with CSS, try enhancing the visual appearance of the slider with smooth transitions.
