@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import one from "/1.jpg";
@@ -21,21 +21,45 @@ function App() {
     //  four, five, six, seven, eight, nine, ten
   ];
   const [index, setIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   function handleClickNext() {
-    if (index < photos.length - 1) {
-      setIndex(index + 1);
-    } else {
-      setIndex(0);
-    }
+    const length = photos.length;
+    setIndex((index + 1) % length);
   }
+
+  function handleClickPrev() {
+    const length = photos.length;
+    setIndex((index - 1 + length) % length);
+  }
+
+  function handleClickStop() {
+    setIsPlaying(false);
+  }
+
+  function handleClickPlay() {
+    setIsPlaying(true);
+  }
+
+  useEffect(() => {
+    if (isPlaying) {
+      const length = photos.length;
+      const timeoutId = setTimeout(() => {
+        setIndex((index + 1) % length);
+      }, 1000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isPlaying, index, photos.length]);
 
   return (
     <div>
-      <img src={photos[index]} alt="" />
+      <img className="h-[800px] w-[800px]  " src={photos[index]} alt="" />
       <div className="flex gap-4">
-        {/* <button onClick={handleClickPrev}>Prev</button> */}
+        <button onClick={handleClickPrev}>Prev</button>
         <button onClick={handleClickNext}>Next</button>
+        <button onClick={handleClickPlay}>Play</button>
+        <button onClick={handleClickStop}>Stop</button>
       </div>
     </div>
   );
