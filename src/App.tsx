@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import one from "/1.jpg";
 import two from "/2.avif";
 import three from "/3.avif";
