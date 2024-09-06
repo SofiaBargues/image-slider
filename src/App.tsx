@@ -14,12 +14,7 @@ import ten from "/10.avif";
 import "./App.css";
 
 function App() {
-  const photos = [
-    one,
-    two,
-    three,
-    //  four, five, six, seven, eight, nine, ten
-  ];
+  const photos = [one, two, three, four, five, six, seven, eight, nine, ten];
   const [index, setIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -54,7 +49,7 @@ function App() {
 
   return (
     <div>
-      <img className="h-[800px] w-[800px]  " src={photos[index]} alt="" />
+      <img className="min-h-[800px]  " src={photos[index]} alt="" />
       <div className="flex gap-4">
         <button onClick={handleClickPrev}>Prev</button>
         <button onClick={handleClickNext}>Next</button>
