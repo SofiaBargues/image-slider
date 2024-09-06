@@ -6,7 +6,7 @@ import two from "/2.avif";
 import three from "/3.avif";
 import four from "/4.avif";
 import five from "/5.avif";
-import six from "/6.avif";
+// import six from "/6.avif";
 import seven from "/7.avif";
 import eight from "/8.avif";
 import nine from "/9.avif";
@@ -14,7 +14,18 @@ import ten from "/10.avif";
 import "./App.css";
 
 function App() {
-  const photos = [one, two, three, four, five, six, seven, eight, nine, ten];
+  const photos = [
+    one,
+    two,
+    three,
+    four,
+    five,
+    // six,
+    seven,
+    eight,
+    nine,
+    ten,
+  ];
   const [index, setIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -38,23 +49,50 @@ function App() {
 
   useEffect(() => {
     if (isPlaying) {
-      const length = photos.length;
       const timeoutId = setTimeout(() => {
-        setIndex((index + 1) % length);
-      }, 1000);
+        setIndex((index + 1) % photos.length);
+      }, 1500);
 
-      return () => clearTimeout(timeoutId);
+      return () => {
+        clearTimeout(timeoutId);
+      };
     }
   }, [isPlaying, index, photos.length]);
 
   return (
-    <div>
-      <img className="min-h-[800px]  " src={photos[index]} alt="" />
-      <div className="flex gap-4">
-        <button onClick={handleClickPrev}>Prev</button>
-        <button onClick={handleClickNext}>Next</button>
-        <button onClick={handleClickPlay}>Play</button>
-        <button onClick={handleClickStop}>Stop</button>
+    <div className=" flex flex-col m-10 items-center">
+      <img
+        className="h-[300px] w-[300px] cover rounded-xl"
+        src={photos[index]}
+        alt=""
+      />
+      <div className="flex gap-4 m-3 ">
+        <button
+          className="border-2 p-2 border-neutral-200 rounded-lg shadow-md  "
+          onClick={handleClickPrev}
+        >
+          ◄ Prev{" "}
+        </button>
+        <button
+          className="border-2 p-2 border-neutral-200 rounded-lg shadow-md  "
+          onClick={handleClickNext}
+        >
+          Next ►
+        </button>
+      </div>
+      <div className="flex gap-4 m-3 ">
+        <button
+          className="border-2 p-2 border-neutral-200 rounded-lg shadow-md  "
+          onClick={handleClickPlay}
+        >
+          Play ▷
+        </button>
+        <button
+          className="border-2 p-2 border-neutral-200 rounded-lg shadow-md  "
+          onClick={handleClickStop}
+        >
+          Stop ∥
+        </button>
       </div>
     </div>
   );
