@@ -14,13 +14,29 @@ import ten from "/10.avif";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const photos = [
+    one,
+    two,
+    three,
+    //  four, five, six, seven, eight, nine, ten
+  ];
+  const [index, setIndex] = useState(0);
 
-  let photos = [one, two, three, four, five, six, seven, eight, nine, ten];
+  function handleClickNext() {
+    if (index < photos.length - 1) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+    }
+  }
 
   return (
     <div>
-      <img src={photos[Math.floor(Math.random() * 10)]} alt="" />
+      <img src={photos[index]} alt="" />
+      <div className="flex gap-4">
+        {/* <button onClick={handleClickPrev}>Prev</button> */}
+        <button onClick={handleClickNext}>Next</button>
+      </div>
     </div>
   );
 }
